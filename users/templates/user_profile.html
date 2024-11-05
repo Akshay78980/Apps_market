@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h1>User Profile</h1>
+<p><strong>Username:</strong> <span id="username"></span></p>
+<p><strong>Email:</strong> <span id="email"></span></p>
+<p><strong>Points Earned:</strong> <span id="points_earned"></span></p>
+
+<h2>Tasks Completed:</h2>
+<table id="tasks_completed" class="table table-bordered"></table>
+
+<div class="container">
+    <div class="row g-4"> <!-- Gap between grid items -->
+        <div class="col-md-8 bg-primary border border-info"> <!-- Spans 8 columns -->
+            Item 1
+        </div>
+        <div class="col-md-4 bg-primary"> <!-- Spans 4 columns -->
+            Item 2
+        </div>
+        <!-- This div will need to be adjusted or removed -->
+    </div>
+</div>
+
+<!-- Modal for uploading a screenshot -->
+<div id="uploadModal" class="modal fade" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload Screenshot</h5>
+                <button type="button" class="btn-close" id="modalClose" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBodyContent">
+                <div id="dropZone" class="drop-zone p-3 text-center">
+                    Drag & drop your screenshot here
+                </div>
+                <input type="file" id="fileInput" style="display: none;">
+                <p id="uploadStatus" class="mt-3 text-muted"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modalCloseFooter">Close</button>
+                <button type="button" class="btn btn-primary" id="uploadButton">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/user_profile.js' %}"></script>
+<script>
+    const uploadScreenshotUrl = "{% url 'upload_screenshot' %}";
+</script>
+{% endblock %}

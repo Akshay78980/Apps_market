@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Apps{% endblock %}
+
+    {% block content %}
+        <h1 class="display-5 fw-bold">App List View</h1>
+        <hr>
+
+        <div id="appListDiv" class="container d-flex justify-content-around">
+            <!-- This will be populated by JavaScript -->
+        </div>
+
+        <div id="loading" style="display: none;">Loading...</div>
+        <div id="error" style="color: red;"></div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'admin-add-app' %}" class="btn btn-success rounded-lg">Add app</a>
+        </div>
+         
+        <script src="{% static 'js/apps_list.js' %}"></script>
+    {% endblock %}
+    
+</body>
+</html>
